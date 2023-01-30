@@ -39,7 +39,6 @@ public class Simulator {
                 }
             }
             currentDay++;
-            view.render();
         }
     }
 }
