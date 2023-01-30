@@ -34,9 +34,7 @@ public class Simulator {
             for (Future task : tasks) {
                 try {
                     task.get();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                } catch (ExecutionException e) {
+                } catch (InterruptedException | ExecutionException e) {
                     throw new RuntimeException(e);
                 }
             }
