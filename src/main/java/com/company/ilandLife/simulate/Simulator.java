@@ -1,5 +1,6 @@
 package com.company.ilandLife.simulate;
 
+import com.company.ilandLife.animal.Animal;
 import com.company.ilandLife.island.Island;
 import com.company.ilandLife.view.View;
 
@@ -38,7 +39,12 @@ public class Simulator {
                     throw new RuntimeException(e);
                 }
             }
+
             currentDay++;
+
+            for (Animal animal : island.getAliveAnimals()) {
+                animal.setDay(currentDay);
+            }
         }
     }
 }

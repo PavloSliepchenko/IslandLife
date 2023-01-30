@@ -31,11 +31,6 @@ public class Island {
     public int getY() {
         return y;
     }
-
-    public List<Animal> getAllAnimals() {
-        return allAnimals;
-    }
-
     public void addAnimal(Animal animal) {
         this.allAnimals.add(animal);
     }
