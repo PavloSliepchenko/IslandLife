@@ -3,6 +3,7 @@ package com.company.ilandLife.island;
 import com.company.ilandLife.animal.Animal;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -54,5 +55,10 @@ public class Island {
 
     public IslandCell[][] getIslandGrid() {
         return islandGrid;
+    }
+
+    public List<Animal> getAliveAnimals() {
+        updateAnimalList();
+        return allAnimals;
     }
 }

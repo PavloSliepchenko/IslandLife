@@ -33,7 +33,7 @@ public class IslandCell {
         AnimalTypes[] animalTypes = AnimalTypes.values();
         for (int i = 0; i < animalTypes.length; i++) {
             AnimalTypes animalType = animalTypes[i];
-            int bound = (int) AnimalFeaturesConfig.getParameter(animalType.name(), MAX_NUMBER_OF_SPECIES);
+            int bound = (int) AnimalFeaturesConfig.getParameter(AnimalFactory.getAnimalName(animalType), MAX_NUMBER_OF_SPECIES);
             int numberOfAnimals = ThreadLocalRandom.current().nextInt(bound);
             for (int j = 0; j < numberOfAnimals; j++) {
                 Animal animal = AnimalFactory.getAnimal(animalType);
@@ -46,7 +46,7 @@ public class IslandCell {
         return result;
     }
 
-    public synchronized void addAnimal(Animal animal) {
+    public void addAnimal(Animal animal) {
         animals.add(animal);
     }
 

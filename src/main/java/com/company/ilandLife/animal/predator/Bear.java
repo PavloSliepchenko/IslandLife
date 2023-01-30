@@ -1,12 +1,10 @@
 package com.company.ilandLife.animal.predator;
 
-import com.company.ilandLife.animal.Animal;
-
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Bear extends Animal {
+public class Bear extends Predator {
+
     public Bear() {
-        isPredator = true;
         isMale = ThreadLocalRandom.current().nextBoolean();
     }
 
@@ -16,4 +14,5 @@ public class Bear extends Animal {
         breed();
         moveToAnotherCell();
     }
+
 }

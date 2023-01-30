@@ -26,7 +26,7 @@ public class View implements Runnable {
 
     private static int dayCount;
 
-    public static Island island;
+    public Island island;
     private static int wolf;
     private static int boa;
     private static int fox;
@@ -47,7 +47,11 @@ public class View implements Runnable {
     private static int deaAnimals;
     private static int bornAnimals;
 
-    public static void render() {
+    public View(Island island) {
+        this.island = island;
+    }
+
+    public void render() {
         dayCount++;
         reset();
         IslandCell[][] grid = island.getIslandGrid();
@@ -55,7 +59,7 @@ public class View implements Runnable {
         print();
     }
 
-    private static void reset() {
+    private void reset() {
         wolf = 0;
         boa = 0;
         fox = 0;
@@ -76,7 +80,7 @@ public class View implements Runnable {
         bornAnimals = 0;
     }
 
-    private static void countAnimals(IslandCell[][] grid) {
+    private void countAnimals(IslandCell[][] grid) {
         for (int y = 0; y < grid.length; y++) {
             for (int x = 0; x < grid[y].length; x++) {
                 IslandCell cell = grid[y][x];
@@ -108,7 +112,7 @@ public class View implements Runnable {
         }
     }
 
-    private static void print() {
+    private void print() {
         System.out.println("Day number " + dayCount);
         System.out.println("Number of dead animals: " + deaAnimals);
         System.out.println("Number of born animals: " + bornAnimals);

@@ -1,19 +1,22 @@
 package com.company.ilandLife.factory;
 
+
+import com.company.ilandLife.animal.predator.Wolf;
+
 public enum AnimalTypes {
-    Wolf,
-    Boa,
-    Fox,
-    Bear,
-    Eagle,
-    Horse,
-    Deer,
-    Rabbit,
-    Mouse,
-    Goat,
-    Sheep,
-    Boar,
-    Buffalo,
-    Duck,
-    Caterpillar
+    WOLF,
+    BOA,
+    FOX,
+    BEAR,
+    EAGLE,
+    HORSE,
+    DEER,
+    RABBIT,
+    MOUSE,
+    GOAT,
+    SHEEP,
+    BOAR,
+    BUFFALO,
+    DUCK,
+    CATERPILLAR
 }

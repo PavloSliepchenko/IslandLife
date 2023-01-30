@@ -1,12 +1,11 @@
 package com.company.ilandLife.simulate;
 
-import com.company.ilandLife.animal.Animal;
 import com.company.ilandLife.island.Island;
-import com.company.ilandLife.island.IslandCell;
 import com.company.ilandLife.view.View;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 
 public class Simulator {
@@ -21,40 +20,29 @@ public class Simulator {
     }
 
     public void simulate() {
-       /* IslandCell[][] grid = island.getIslandGrid();
-        View view = new View();
-        view.island = this.island;
-        view.run();
-        while (currentDay < numberOfDaysToSimulate) {
-            for (Animal animal : island.getAllAnimals()) {
-                animal.run();
-            }
+       ExecutorService executor = Executors.newCachedThreadPool();
+        View view = new View(island);
+        ScheduledExecutorService render = Executors.newScheduledThreadPool(1);
+        render.scheduleAtFixedRate(view, 0, 1, TimeUnit.SECONDS);
 
+        while (currentDay < numberOfDaysToSimulate && island.getAliveAnimals().size() > 0) {
+            List<Future> tasks = new ArrayList<>();
+            island.getAliveAnimals().forEach(animal -> {
+                        tasks.add(executor.submit(animal));
+                    }
+            );
+            for (Future task : tasks) {
+                try {
+                    task.get();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                } catch (ExecutionException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             currentDay++;
-
-            for (Animal animal : island.getAllAnimals()) {
-                animal.setDay(currentDay);
-            }
-
-
-            island.updateAnimalList();
-            view.run();
-        }*/
-        /*View view = new View();
-        view.island = this.island;
-        view.run();
-        ExecutorService executor = Executors.newCachedThreadPool();
-        for (Animal animal : island.getAllAnimals()) {
-            executor.submit(animal);
+            view.render();
         }
-        currentDay++;
-        for (Animal animal : island.getAllAnimals()) {
-            animal.setDay(currentDay);
-        }
-        view.run();*/
-
-
-        //TO DO
     }
 }
 
